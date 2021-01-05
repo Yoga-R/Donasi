@@ -25,14 +25,14 @@
 				<div class="col-12">
 					<section class="content-header">
 						<p>Nama Kategori</p>
-						<form class ="from-horizontal " action="../admin/module/donasi/aksi_tambah.php" method="POST">
+						<form class ="from-horizontal " action="../admin/module/donasi/aksi_tambah.php" method="POST" enctype="multipart/form-data">
 						<select name="namakategori" class="form form--focus-blue">
 						<?php
 						$kueriprogram=mysqli_query ($koneksi, "select * from tbl_kategori");
     while ($kp=mysqli_fetch_array($kueriprogram)){
 		?>
 							<option selected="">Pilih Kategori</option>
-							<option value="<?php echo $kp['nama_kategori']; ?>"><?php echo $kp['nama_kategori']; ?></option>
+							<option value="<?php echo $kp['id_kategori']; ?>"><?php echo $kp['nama_kategori']; ?></option>
 	<?php }?>
 						</select>
 					<br>
@@ -47,7 +47,9 @@
 						<!-- <form class ="from-horizontal " action="../admin/module/kabupaten/aksi_tambah.php" method="POST"> -->
 						<!-- <input type="hidden" name = "id_kabupaten" value ="<?php echo $id_kabupaten; ?>"> -->
 						<!-- <input type = "text" id="namabrand" name= "nama_kabupaten" placeholder = "Masukkan foto" class="form form--focus-blue mt-0"> -->
-						<textarea name="detail" class="form form--focus-blue" placeholder="Detail Program ..."></textarea>
+						<!-- <textarea name="detail" class="form form--focus-blue" placeholder="Detail Program ..."></textarea> -->
+						<!-- tambahan ckeditor -->
+						<textarea name="detail" class="form form--focus-blue editor"></textarea>
 					<br>
 					<br>
 						<p>Total Dana Dibutuhkan</p>
@@ -72,7 +74,7 @@
 					<br>
 					<br>
 					<!-- <section class="content-header"> -->
-						<p>Foto 1</p>
+						<p>Foto Sampul</p>
 						<!-- <form class ="from-horizontal " action="../admin/module/donasi/aksi_tambah.php" method="POST"> -->
 						<input type="hidden" name = "id_kabupaten" value ="<?php echo $id_kabupaten; ?>">
 					<!-- input type = "text" id="namabrand" name= "nama_kabupaten" placeholder = "Masukkan durasi yang dibutuhkan" class="form form--focus-blue mt-0"> -->
@@ -80,7 +82,7 @@
 					<br>
 					<br>
 					<!-- <section class="content-header"> -->
-						<p>Foto 2</p>
+						<p>Foto Detail</p>
 						<!-- <form class ="from-horizontal " action="../admin/module/kabupaten/aksi_tambah.php" method="POST"> -->
 						<input type="hidden" name = "id_kabupaten" value ="<?php echo $id_kabupaten; ?>">
 					<!-- <input type = "text" id="namabrand" name= "nama_kabupaten" placeholder = "Masukkan durasi yang dibutuhkan" class="form form--focus-blue mt-0"> -->

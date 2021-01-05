@@ -34,7 +34,9 @@
 					   <?php
     include "../lib/config.php";
     include "../lib/koneksi.php";
-    $kueriprogram=mysqli_query ($koneksi, "select * from tbl_program");
+	$kueriprogram=mysqli_query ($koneksi, "select tbl_program.*,tbl_kategori.*
+	FROM tbl_program
+LEFT JOIN tbl_kategori ON tbl_program.id_kategori = tbl_kategori.id_kategori");
     while ($kp=mysqli_fetch_array($kueriprogram)){
 		?>
 					<tr>
@@ -42,9 +44,9 @@
 						<td>
 
 						<div class ="btn-group">
-						<a  href ="<?php echo $admin_url; ?>adminweb.php?module=edit_kabupaten&id_kabupaten=<?php echo $kp ['id_program']; ?>"> <button class="btn btn-secondary"><i class='fa fa-pencil'></i>
+						<a  href ="<?php echo $admin_url; ?>adminweb.php?module=edit_donasi&id_donasi=<?php echo $kp ['id_program']; ?>"> <button class="btn btn-secondary"><i class='fa fa-pencil'></i>
 												</button></a>
-												<a href ="<?php echo $admin_url; ?>module/program/aksi_hapus.php?id_kabupaten=<?php echo $kp ['id_program']; ?>"
+												<a href ="<?php echo $admin_url; ?>module/donasi/aksi_hapus.php?id_donasi=<?php echo $kp ['id_program']; ?>"
 												onClick="return confirm ('Anda yakin ingin menghapus data ini')"><button class="btn btn-danger"><i class='fa fa-power-off'></i>
 												</button>
 											</a>
@@ -60,7 +62,7 @@
 					
 					<div class = "box-footer">
 						<br>
-		<a href="<?php echo $base_url; ?>admin/adminweb.php?module=tambah_kabupaten">
+		<a href="<?php echo $base_url; ?>admin/adminweb.php?module=tambah_donasi">
 		<button class="btn btn-primary">Tambah Program</button></a>
 					</section><!-- main__box -->
 				</div>

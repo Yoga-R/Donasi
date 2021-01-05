@@ -18,9 +18,9 @@
 				<section class="info-box info-box--blue">
 					<div class="info-box__icon"><span class="fa fa-shopping-cart"></span></div>
 					<div class="info-box__description">
-						<h2>Produk</h2>
-						<h1><?= $jumlahProduk; ?></h1>
-						<time>12 Minutes ago</time>
+						<h2>Jumlah Program</h2>
+						<h1><?= $jumlahprogram; ?></h1>
+						<!-- <time>12 Minutes ago</time> -->
 					</div>
 					<a title="Detail Products" class="info-box__btn-detail" href=""><span class="fa fa-arrow-right"></span></a>
 				</section>
@@ -31,7 +31,7 @@
 					<div class="info-box__description">
 						<h2>Kategori</h2>
 						<h1><?= $jumlahkategori; ?></h1>
-						<time>2 Minutes ago</time>
+						<!-- <time>2 Minutes ago</time> -->
 					</div>
 					<a title="Detail Orders" class="info-box__btn-detail" href=""><span class="fa fa-arrow-right"></span></a>
 				</section>
@@ -40,9 +40,9 @@
 				<section class="info-box info-box--green">
 					<div class="info-box__icon"><span class="fa fa-users"></span></div>
 					<div class="info-box__description">
-						<h2>User</h2>
-						<h1><?= $jumlahuser; ?></h1>
-						<time>30 Minutes ago</time>
+						<h2>Total Donasi</h2>
+						<h1><?= $jumlahsum; ?></h1>
+						
 					</div>
 					<a title="Detail Members" class="info-box__btn-detail" href=""><span class="fa fa-arrow-right"></span></a>
 				</section>

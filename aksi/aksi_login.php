@@ -20,13 +20,13 @@ if (empty($email) or empty($password)) {
   
 
     if ($ketemu > 0) {
-        session_start();
+        session_start(); 
         $_SESSION['email'] = $r['email'];
         $_SESSION['password'] = $r['password'];
     
   
          //login sebagai admin
-            header("location:../index.php/");
+            header("location:../index.php");
        
 
     }

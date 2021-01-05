@@ -1,4 +1,4 @@
 <?php 
-$base_url = "http://localhost/donasi/";
-$admin_url = "http://localhost/donasi/admin/";
+$base_url = "http://localhost/kemas/";
+$admin_url = "http://localhost/kemas/admin/";
  ?>

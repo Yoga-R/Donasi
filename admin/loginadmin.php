@@ -5,7 +5,7 @@ include "../lib/config.php";
 $username = $_POST['username'];
 $password = $_POST['password'];
 // pastikan username dan password adalah berupa huruf atau angka.
-
+ 
 if (!ctype_alnum($username) OR !ctype_alnum($password)) {
     echo "
     <script> 

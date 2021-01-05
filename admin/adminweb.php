@@ -30,6 +30,14 @@ if (empty($_SESSION['username']) AND empty($_SESSION['pasword'])) {
 	$querykategori=mysqli_query($koneksi, "SELECT COUNT(*) AS jumlah_kategori FROM tbl_kategori");
 	$hasilkategori=mysqli_fetch_array($querykategori);
 	$jumlahkategori=$hasilkategori['jumlah_kategori'];
+
+	$querykategori=mysqli_query($koneksi, "SELECT COUNT(*) AS jumlah_program FROM tbl_program");
+	$hasilkategori=mysqli_fetch_array($querykategori);
+	$jumlahprogram=$hasilkategori['jumlah_program'];
+
+	$querysum=mysqli_query($koneksi, "SELECT sum(jumlah_biaya) AS jumlahsum FROM transaksi");
+	$hasilsum=mysqli_fetch_array($querysum);
+	$jumlahsum=$hasilsum['jumlahsum'];
 ?>
 
 
@@ -57,7 +65,6 @@ if (empty($_SESSION['username']) AND empty($_SESSION['pasword'])) {
     <meta property="og:title" content="Dashboard . Reza Admin">
     <meta property="og:description" content="Open source responsive admin template with Bootstrap framework">
     <meta property="og:image" content="https://rezafikkri.github.io/Reza-Admin/dist/img/rezaadmin.jpg">
-
 	<!-- Bootstrap CSS first -->
 	<link rel="stylesheet" href="dist/css/bootstrap.min.css">
 	<!-- then Font Awesome -->
@@ -66,6 +73,12 @@ if (empty($_SESSION['username']) AND empty($_SESSION['pasword'])) {
 	<link rel="stylesheet" type="text/css" href="dist/css/reza-admin.min.css">
 	<!-- Favicon -->
 	<link rel="icon" href="dist/img/Reza_Admin.ico">
+	<!-- ckeditor -->
+	<script src="dist/ckeditor/ckeditor.js"></script>
+	<script src="dist/ckeditor/js/sample.js"></script>
+	<link rel="stylesheet" href="dist/ckeditor/css/samples.css">
+	<link rel="stylesheet" href="dist/toolbarconfigurator/lib/codemirror/neo.css">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>		
 	<!-- navbar -->
@@ -101,14 +114,16 @@ if (empty($_SESSION['username']) AND empty($_SESSION['pasword'])) {
 			<li class="sidebar__item"><a href="adminweb.php?module=kategori"><span class="fa fa-th-large"></span> Kategori</a></li>
 			
 			<li class="sidebar__item"><a href="adminweb.php?module=donasi"><span class="fa fa-th-large"></span> Program Donasi</a></li>
-			<li class="sidebar__item"><a href="adminweb.php?module=brand"><span class="fa fa-bar-chart-o"></span> Data Donatur</a></li>
-			<li class="sidebar__item"><a href="adminweb.php?module=brand"><span class="fa fa-th-large"></span> Data User</a></li>
+			<!-- <li class="sidebar__item"><a href="adminweb.php?module=brand"><span class="fa fa-bar-chart-o"></span> Data Donatur</a></li>
+			<li class="sidebar__item"><a href="adminweb.php?module=brand"><span class="fa fa-th-large"></span> Data User</a></li> -->
 
 
-			<li class="sidebar__item"><a class="sidebar__btn-dropdown" href="#"><span class="fa fa-building"></span> Cetak Laporan</a>
+			<li class="sidebar__item"><a class="sidebar__btn-dropdown" href="#"><span class="fa fa-building"></span> Laporan</a>
 				<ul class="sidebar__dropdown">
-					<li class="sidebar__dropdown-item"><a href="login.html">Program Donasi </a></li>
-					<li class="sidebar__dropdown-item"><a href="register.html">Keua</a></li>
+					<li class="sidebar__dropdown-item"><a href="adminweb.php?module=LaporanDonatur">Donatur</a></li>
+					<li class="sidebar__dropdown-item"><a href="adminweb.php?module=LaporanProgram">Program Donasi </a></li>
+					<li class="sidebar__dropdown-item"><a href="adminweb.php?module=Laporan">Transaksi</a></li>
+					
 				
 				</ul>
 			</li>
@@ -140,7 +155,13 @@ if (empty($_SESSION['username']) AND empty($_SESSION['pasword'])) {
             } elseif ($_GET['module'] == 'edit_donasi') {
                 include "module/donasi/form_edit.php";
 
-				
+			} elseif ($_GET['module'] == 'Laporan') {
+                include "module/LaporanTransaksi/ListTransaksi.php";
+            } elseif ($_GET['module'] == 'LaporanProgram') {
+                include "module/LaporanProgram/ListLaporanProgram.php";
+            } elseif ($_GET['module'] == 'LaporanDonatur') {
+				include "module/LaporanDonatur/ListDonatur.php";
+					
             // } elseif ($_GET['module'] == 'merek') {
             //     include "module/merek/list_merek.php";
             // } elseif ($_GET['module'] == 'tambah_merek') {
@@ -234,7 +255,70 @@ if (empty($_SESSION['username']) AND empty($_SESSION['pasword'])) {
 
     <!-- Optional Javascript -->
     <script src="plugins/Chart.js/Chart.min.js"></script>
-
+	<!-- ckeditor -->
+	
+	<script>
+	initSample();
+	ClassicEditor
+			.create( document.querySelector( '.editor' ), {
+				
+				toolbar: {
+					items: [
+						'heading',
+						'|',
+						'bold',
+						'italic',
+						'link',
+						'bulletedList',
+						'numberedList',
+						'|',
+						'indent',
+						'outdent',
+						'|',
+						'imageUpload',
+						'blockQuote',
+						'insertTable',
+						'mediaEmbed',
+						'undo',
+						'redo'
+					]
+				},
+				language: 'en',
+				image: {
+					toolbar: [
+						'imageTextAlternative',
+						'imageStyle:full',
+						'imageStyle:side'
+					]
+				},
+				table: {
+					contentToolbar: [
+						'tableColumn',
+						'tableRow',
+						'mergeTableCells'
+					]
+				},
+				licenseKey: '',
+				
+			} )
+			.then( editor => {
+				window.editor = editor;
+		
+				
+				
+				
+		
+				
+				
+				
+			} )
+			.catch( error => {
+				console.error( 'Oops, something went wrong!' );
+				console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+				console.warn( 'Build id: x8fy2v9q6yua-8o65j7c6blw0' );
+				console.error( error );
+			} );
+	</script>
 	<script type="text/javascript">
 		// visitor charts
 		const visitorChart = document.querySelector("#visitor_chart").getContext('2d');

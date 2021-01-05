@@ -29,7 +29,7 @@
 		 
 		
 		 $hasilquery=mysqli_fetch_array($queryEdit);
-		 $idkategori =$hasilquery['id_kategori'];
+		 $id_kategori =$hasilquery['id_kategori'];
 		 $namakategori=$hasilquery['nama_kategori'];
 		?>
 		

@@ -101,12 +101,12 @@
                             </a>
                             <div class="progress cause-progress">
                               <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
-                                10$ / 500$
+                                Rp.0 / Rp<?= $hasilquery['dana_program']; ?>
                             </div>
                         </div>
                         <h4 class="cause-title">
                             <a href="product.html" 
-                            class="product-name"><?= $hasilquery['nama_p']; ?></a>
+                            class="product-name"><?= $hasilquery['nama_program']; ?></a>
                         </h4>
                         <div class="cause-details">
                             <span class="product-price-old">
@@ -114,11 +114,11 @@
                             </span>
                             <br>
                             <span class="product-price">
-                                Rp 5.000.000
+                            <?= $hasilquery['dana_program']; ?>
                             </span>
                         </div>
                         <div class="btn-holder text-center">
-                            <button class="btn btn-primary" type="button"><i class=" mr-2"></i>Lihat Detail</button>
+                            <a href="detaildonasi.php?id_donasi=<?php echo $hasilquery['id_program'];?>"><button class="btn btn-primary" type="button"><i class=" mr-2"></i>Lihat Detail</button></a>
                         </div>
                         
                     </div>

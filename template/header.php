@@ -112,7 +112,7 @@ session_start();
 
        include "lib/koneksi.php";
 
-       if(empty($_SESSION['username']) and empty($_SESSION['password'])) { ?>
+       if(empty($_SESSION['email']) and empty($_SESSION['password'])) { ?>
         <li class="submenu-item">
             <a href="registerdonatur.php">
             Daftar
@@ -168,18 +168,26 @@ session_start();
                                     </li>
                                     <?php
                                 } else {
-                                    $user = $_SESSION ['username'];
-                                    $queryuser_session = mysqli_query ($koneksi, "select * from tbl_user WHERE username = '$user'");
+                                    $user = $_SESSION ['email'];
+                                    $queryuser_session = mysqli_query ($koneksi, "select * from tbl_donatur WHERE email = '$user'");
                                     $hasilQuery_session = mysqli_fetch_array($queryuser_session);
-                                    $id_user_session = $hasilQuery_session ['id_user'];
+                                    $id_user_session = $hasilQuery_session ['id_donatur'];
                                     
-                                    $foto_session = $hasilQuery_session ['fotop'];
+                                    // $foto_session = $hasilQuery_session [''];
                                     
                                     
 
                                     ?>
-                                    
-                                    <a href="aksi/aksi_logout.php"   type="button" class="btn btn-secondary" ><i class="fas fa-sign-in-alt mr-2"></i>Log Out</a>
+                                    <!-- <ul class="submenu-item">
+                                    <a href=""><i class="fas fa-sign-in-alt mr-2"></i>Akun</a>
+                                    </ul> -->
+                                    <li class="has-child"><a href="#">Akun</a>
+
+
+              <ul class="submenu">
+               <li class="submenu-item"><a href="datadiridonatur.php">Profil</a></li>
+               <li class="submenu-item"><a href="aksi/aksi_logout.php">Logout</a></li>
+           </ul>
         <!-- <li class="nav-item dropdown ">     
             
 
@@ -211,13 +219,13 @@ session_start();
                                 
 
                                 ?>
-                                <img class="rounded-circle py-1 my-1  "  style="max-width:60%;"  src="images/foto_profile/<?= $foto_session; ?>"
+                                <!-- <img class="rounded-circle py-1 my-1  "  style="max-width:60%;"  src="images/foto_profile/<?= $foto_session; ?>"
                                 data-holder-rendered="true" >  <img src="https://img.icons8.com/metro/10/000000/expand-arrow.png"/>
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <a href="profile.php?id_user=<?=  $id_user_session; ?>" class="dropdown-item">Profile</a>
                                     <div class="dropdown-divider"></div>
-                                    <a href="aksi/aksi_logout.php" class="dropdown-item dropdown-item--hover-red">Logout <span class="fa fa-sign-out"></span></a>
-                                </div>
+                                    <a href="aksi/aksi_logout.php" class="dropdown-item dropdown-item--hover-red">Logout5 <span class="fa fa-sign-out"></span></a>
+                                </div> -->
 
 <!--                                                 
                                                          <div class="dropdown-menu" aria-labelledby="electronics">

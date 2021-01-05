@@ -7,9 +7,10 @@ if (empty($_SESSION['username'])AND empty ($_SESSION['passuser'])) {
     include "../../../lib/config.php";
     include "../../../lib/koneksi.php";
 
-    $idkab = $_GET ['id_kabupaten'];
-  
-    $queryHapus = mysqli_query($koneksi, "DELETE FROM tbl_kabupaten  WHERE id_kabupaten='$idkab'");
+    $iddonasi=$_GET['id_donasi'];
+   
+
+    $queryHapus = mysqli_query($koneksi, "DELETE from tbl_program WHERE id_program='$iddonasi'");
  
 
     if ($queryHapus){

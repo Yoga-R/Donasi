@@ -13,9 +13,9 @@ if (empty($_SESSION['username'])AND empty ($_SESSION['passuser'])) {
  
 
     if ($queryHapus){
-        echo "<script> alert ('Data Brand Berhasil dihapus'); window.location ='$admin_url'+ 'adminweb.php?module=brand';</script>";
+        echo "<script> alert ('Data Kategori Berhasil dihapus'); window.location ='$admin_url'+ 'adminweb.php?module=brand';</script>";
     }else {
-        echo "<script> alert ('Data Brand gagal dihapus'); window.location ='$admin_url'+ 'adminweb.php?module=brand';</script>";
+        echo "<script> alert ('Data Kategori gagal dihapus'); window.location ='$admin_url'+ 'adminweb.php?module=brand';</script>";
     }
 }
     ?>
